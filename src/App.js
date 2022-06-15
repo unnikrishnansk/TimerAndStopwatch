@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Timer from './components/Timer';
+import Stopwatch from './components/Stopwatch';
+import { useState } from 'react';
 
 function App() {
+
+  let initial = 100;
+
+  const [toggle, settoggle] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <button className='togglebttn' onClick={() => settoggle(!toggle)}>{(toggle ? "GO TO STOPWATCH" : "GO TO TIMER")}</button>
+
+      {(toggle) ? <Timer initial={initial}/> : <Stopwatch />}
+     
+     
     </div>
   );
 }
